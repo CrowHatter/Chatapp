@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .addOnSuccessListener(documentReference -> {
                     loading(false);
                     preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
-                    preferenceManager.putString(Constants.KEY_NID, binding.inputNID.getText().toString());
+                    preferenceManager.putString(Constants.KEY_NID, documentReference.getId());
                     preferenceManager.putString(Constants.KEY_NAME, binding.inputName.getText().toString());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -73,7 +73,6 @@ public class SignUpActivity extends AppCompatActivity {
                     showToast(exception.getMessage());
                 });
     }
-
 
     private boolean isValidSignUpDetails(){
         if (binding.inputName.getText().toString().trim().isEmpty()) {

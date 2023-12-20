@@ -13,7 +13,6 @@ import com.example.chatapp.utilities.PreferenceManager;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -46,11 +45,12 @@ public class SignInActivity extends AppCompatActivity {
                 .whereEqualTo(Constants.KEY_PASSWORD, binding.inputPassword.getText().toString())
                 .get()
                 .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null && task.getResult().size() > 0) {
+                    if (task.isSuccessful() && task.getResult() != null
+                            && task.getResult().getDocuments().size() > 0) {
                         DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
                         preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
                         preferenceManager.putString(Constants.KEY_NID, documentSnapshot.getId());
-                        preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getId());
+                        preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
@@ -86,18 +86,6 @@ public class SignInActivity extends AppCompatActivity {
         }else {
             return true;
         }
-    }
-
-    private void addDataToFirestore() {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-        HashMap<String, Object> data = new HashMap<>();
-        data.put("NID", "D1050000");
-        data.put("password", "1234");
-        database.collection("account").add(data).addOnSuccessListener(documentReference -> {
-            Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_SHORT).show();
-        }).addOnFailureListener(exception -> {
-            Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_SHORT).show();
-        });
     }
 
 }
