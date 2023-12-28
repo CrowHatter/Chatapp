@@ -57,6 +57,9 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging:23.4.0")
     implementation("com.google.firebase:firebase-firestore:24.10.0")
 
+    // makeramen
+    implementation("com.makeramen:roundedimageview:2.3.0")
+
     // MultiDex
     implementation("androidx.multidex:multidex:2.0.1")
 }

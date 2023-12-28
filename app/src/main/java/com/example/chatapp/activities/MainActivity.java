@@ -8,7 +8,6 @@ import android.widget.Toast;
 import com.example.chatapp.databinding.ActivityMainBinding;
 import com.example.chatapp.utilities.Constants;
 import com.example.chatapp.utilities.PreferenceManager;
-import com.google.firebase.Firebase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -23,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
-        //loadUserDetails();
-        //getToken();
+        loadUserDetails();
+        getToken();
     }
 
-    //private void loadUserDetails(){
-    //    binding.textName.setText(preferenceManager.getString(Constants.KEY_NID));
-    //}
+    private void loadUserDetails(){
+        binding.textName.setText(preferenceManager.getString(Constants.KEY_NAME));
+    }
 
     private void showToast(String message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
