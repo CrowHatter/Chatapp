@@ -26,7 +26,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@id/imageProfile"
-        app:layout_constraintTop_toTop0f="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.75"
         tools:ignore="MissingConstraints" />
 

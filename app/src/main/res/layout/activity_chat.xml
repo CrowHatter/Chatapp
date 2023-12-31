@@ -8,6 +8,8 @@
     android:background="@color/primary"
     tools:context=".activities.ChatActivity">
 
+    <!-- Other views and constraints -->
+
     <View
         android:id="@+id/viewBackground"
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
         android:layout_marginBottom="@dimen/_16sdp"
         android:background="@drawable/background_content_top"
         app:layout_constraintBottom_toTopOf="@id/layoutSend"
-        app:layout_constraintTop_toTop0f="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageInfo"
@@ -26,7 +28,6 @@
         android:padding="@dimen/_4sdp"
         android:src="@drawable/ic_info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTop0f="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -38,7 +39,6 @@
         android:padding="@dimen/_5sdp"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTop0f="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -76,8 +76,7 @@
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
         app:layout_constraintBottom_toBottomOf="@id/viewBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_to_EndOf="@id/viewBackground"
+        app:layout_constraintEnd_toEndOf="@id/viewBackground"
         app:layout_constraintStart_toStartOf="@id/viewBackground"
         app:layout_constraintTop_toTopOf="@id/viewBackground" />
 
@@ -88,7 +87,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/background_chat_input"
-        app:layout_constraintBottom_toBottom0f="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
@@ -117,11 +115,8 @@
         android:paddingEnd="@dimen/_16sdp"
         android:textColor="@color/white"
         android:textColorHint="@color/secondary_text"
-        app:layout_constraintBottom_toBottom0f="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/layoutSend"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
